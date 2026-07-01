@@ -18,11 +18,8 @@ spec:
 
     spec:
       containers:
-      - name: kubernetes-dashboard
-
-        image: suchit10/kubernetes-github-actions:latest
-
-        imagePullPolicy: Always
-
-        ports:
-        - containerPort: 5000
+        - name: kubernetes-dashboard
+          image: suchit10/kubernetes-github-actions:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000

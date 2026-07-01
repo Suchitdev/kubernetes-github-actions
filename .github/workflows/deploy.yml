@@ -30,5 +30,11 @@ jobs:
           push: true
           tags: suchit10/kubernetes-github-actions:latest
 
-      - name: Restart Kubernetes Deployment
-        run: kubectl rollout restart deployment kubernetes-dashboard
+      - name: Update Kubernetes Deployment
+        run: |
+          kubectl set image deployment/kubernetes-dashboard \
+          kubernetes-dashboard=suchit10/kubernetes-github-actions:latest
+
+      - name: Wait for Rollout to Complete
+        run: |
+          kubectl rollout status deployment/kubernetes-dashboard
