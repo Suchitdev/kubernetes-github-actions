@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kubernetes Cloud Operations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="hero">
+
+        <nav>
+            <div class="logo">
+                ☸ Kubernetes Cloud
+            </div>
+
+            <div class="status">
+                <span class="dot"></span>
+                {{ cluster.status }}
+            </div>
+        </nav>
+
+        <div class="hero-content">
+
+            <div class="left">
+
+                <span class="tag">
+                    Production Infrastructure
+                </span>
+
+                <h1>
+                    Kubernetes Cloud Operations Portal
+                </h1>
+
+                <p>
+                    Monitor deployments, cluster health, GitHub Actions,
+                    Docker images and Kubernetes workloads from one modern interface.
+                </p>
+
+                <div class="buttons">
+                    <button>Cluster Status</button>
+                    <button class="outline">Deployment Info</button>
+                </div>
+
+            </div>
+
+            <div class="right">
+
+                <div class="health-card">
+
+                    <h3>Cluster Health</h3>
+
+                    <div class="circle">
+
+                        <h1>99.9%</h1>
+                        <span>Healthy</span>
+
+                    </div>
+
+                    <p>{{ cluster.cluster_name }}</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <section class="metrics">
+
+        <div class="card">
+            <h2>{{ cluster.nodes }}</h2>
+            <p>Worker Node</p>
+        </div>
+
+        <div class="card">
+            <h2>{{ cluster.pods }}</h2>
+            <p>Running Pods</p>
+        </div>
+
+        <div class="card">
+            <h2>{{ cluster.deployments }}</h2>
+            <p>Deployments</p>
+        </div>
+
+        <div class="card">
+            <h2>{{ cluster.services }}</h2>
+            <p>Services</p>
+        </div>
+
+    </section>
+
+    <section class="pipeline">
+
+        <h2>Deployment Pipeline</h2>
+
+        <div class="flow">
+
+            <div class="step">
+                <span>👨‍💻</span>
+                <h4>Developer</h4>
+            </div>
+
+            <div class="arrow">➜</div>
+
+            <div class="step">
+                <span>📂</span>
+                <h4>GitHub</h4>
+            </div>
+
+            <div class="arrow">➜</div>
+
+            <div class="step">
+                <span>⚡</span>
+                <h4>Actions</h4>
+            </div>
+
+            <div class="arrow">➜</div>
+
+            <div class="step">
+                <span>🐳</span>
+                <h4>Docker Hub</h4>
+            </div>
+
+            <div class="arrow">➜</div>
+
+            <div class="step">
+                <span>☸</span>
+                <h4>Kubernetes</h4>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="details">
+
+        <div class="info">
+
+            <h2>Cluster Information</h2>
+
+            <table>
+
+                <tr>
+                    <td>Environment</td>
+                    <td>{{ cluster.environment }}</td>
+                </tr>
+
+                <tr>
+                    <td>Namespace</td>
+                    <td>{{ cluster.namespace }}</td>
+                </tr>
+
+                <tr>
+                    <td>Version</td>
+                    <td>{{ cluster.version }}</td>
+                </tr>
+
+                <tr>
+                    <td>Docker Image</td>
+                    <td>{{ cluster.image }}</td>
+                </tr>
+
+                <tr>
+                    <td>Hostname</td>
+                    <td>{{ cluster.hostname }}</td>
+                </tr>
+
+                <tr>
+                    <td>Operating System</td>
+                    <td>{{ cluster.os }}</td>
+                </tr>
+
+                <tr>
+                    <td>Python</td>
+                    <td>{{ cluster.python }}</td>
+                </tr>
+
+                <tr>
+                    <td>Updated</td>
+                    <td>{{ cluster.last_update }}</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+        <div class="resources">
+
+            <h2>Platform Services</h2>
+
+            <div class="service">✅ GitHub Actions Connected</div>
+
+            <div class="service">✅ Docker Hub Available</div>
+
+            <div class="service">✅ Kubernetes Running</div>
+
+            <div class="service">✅ Deployment Healthy</div>
+
+            <div class="service">✅ Production Ready</div>
+
+        </div>
+
+    </section>
+
+    <footer>
+
+        Built with Flask • Docker • Kubernetes • GitHub Actions
+
+    </footer>
+
+</body>
+
+</html>
