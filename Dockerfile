@@ -1,11 +1,16 @@
-FROM python:3.12-slim
+FROM python:3.13
+
+RUN useradd -m appuser
 
 WORKDIR /app
 
 COPY . .
 
-RUN pip install flask
+RUN pip install -r requirements.txt
 
-EXPOSE 5000
+USER appuser
 
-CMD ["python", "app.py"]
+CMD ["python","app.py"]
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+CMD curl --fail http://localhost:5000/ || exit 1

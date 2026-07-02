@@ -17,9 +17,33 @@ spec:
         app: kubernetes-dashboard
 
     spec:
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+
       containers:
         - name: kubernetes-dashboard
-          image: suchit10/kubernetes-github-actions:latest
+          image: suchit10/kubernetes-github-actions:v1
           imagePullPolicy: Always
+
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            runAsUser: 10001
+            runAsGroup: 10001
+            readOnlyRootFilesystem: true
+
+            capabilities:
+              drop:
+                - ALL
+
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+
           ports:
             - containerPort: 5000
